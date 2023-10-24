@@ -13,30 +13,27 @@ func CounterSimulationWithIsolationLevel(isolationLevel sql.IsolationLevel) (str
 
 	var wg sync.WaitGroup
 
-	userNum := 5
+	userNum := 2
 	wg.Add(userNum)
 
 	for i := 0; i < userNum; i++ {
 		go func(i int) {
 			defer wg.Done()
-
+			ctx := context.Background()
 			tx, err := db.BeginTx(
-				context.Background(),
+				ctx,
 				&sql.TxOptions{
 					Isolation: isolationLevel,
 					ReadOnly:  false,
 				})
 
-			// tx, err := db.Begin()
-
 			if err != nil {
 				panic("couldn't init transaction " + err.Error())
 			}
 
-			userIncrementsValue(db, i)
+			userIncrementsValue(tx, i)
 
-			err = tx.Rollback()
-
+			err = tx.Commit()
 			if err != nil {
 				panic("couln't commit " + err.Error())
 			}
@@ -84,7 +81,12 @@ func NoTransaction() (string, error) {
 	return "No transaction simulation complete", nil
 }
 
-func userIncrementsValue(db *sql.DB, userId int) {
+type DbInterfacer interface {
+	Exec(query string, args ...any) (sql.Result, error)
+	Query(query string, args ...any) (*sql.Rows, error)
+}
+
+func userIncrementsValue(db DbInterfacer, userId int) {
 	println(fmt.Sprintf("User %d: gets counter", userId))
 
 	counter, err := fetchCounter(db)
@@ -103,6 +105,7 @@ func userIncrementsValue(db *sql.DB, userId int) {
 		WHERE id = 1;
 	`)
 
+
 	if err != nil {
 		panic(fmt.Errorf("couldn't update counter. %s", err.Error()))
 	}
@@ -114,21 +117,7 @@ func userIncrementsValue(db *sql.DB, userId int) {
 	}
 }
 
-func setCounter(db *sql.DB, counter int) error {
-	_, err := db.Exec(`
-		UPDATE counters
-		SET counter = ?
-		WHERE id = 1;
-	`, counter)
-
-	if err != nil {
-		return fmt.Errorf("couldn't update counter. %s", err.Error())
-	}
-
-	return nil
-}
-
-func fetchCounter(db *sql.DB) (int, error) {
+func fetchCounter(db DbInterfacer) (int, error) {
 	res, err := db.Query(`
 		SELECT counter FROM counters
 		WHERE id = 1;
@@ -143,6 +132,7 @@ func fetchCounter(db *sql.DB) (int, error) {
 	if counter == nil {
 		return -1, fmt.Errorf("pointer to counter is nil")
 	}
+	res.Close()
 
 	return *counter, err
 }
