@@ -7,28 +7,45 @@ import (
 	"transactions.tests/transactions/simulations"
 )
 
+func readIsolationLevel() sql.IsolationLevel {
+	level := sql.LevelDefault
+
+	if len(os.Args) < 3 {
+		panic("choose one of: read_uncommitted, read_committed, write_committed, repeatable_read, snapshot, serializable, linearizable")
+	}
+
+	switch arg2 := os.Args[2]; arg2 {
+	case "read_uncommitted":
+		level = sql.LevelReadUncommitted
+	case "read_committed":
+		level = sql.LevelReadCommitted
+	case "write_committed":
+		level = sql.LevelWriteCommitted
+	case "repeatable_read":
+		level = sql.LevelRepeatableRead
+	case "snapshot":
+		level = sql.LevelSnapshot
+	case "serializable":
+		level = sql.LevelSerializable
+	case "linearizable":
+		level = sql.LevelLinearizable
+	default:
+		panic("choose one of: read_uncommitted, read_committed, write_committed, repeatable_read, snapshot, serializable, linearizable")
+	}
+
+	return level
+}
+
 func main() {
 	switch arg := os.Args[1]; arg {
 	case "dirty_read":
-		db := simulations.GetDB()
-		tx, err := db.Begin()
+		res, err := simulations.DirtyRead(readIsolationLevel())
 
 		if err != nil {
 			panic(err)
 		}
 
-		_, err = tx.Exec("INSERT INTO counters (counter) VALUES (0);")
-
-		if err != nil {
-			panic(err)
-		}
-
-		err = tx.Rollback()
-
-		if err != nil {
-			panic(err)
-		}
-
+		println(res)
 	case "transaction_level":
 		res, err := simulations.PrepDirtyReadTable()
 		println(res)
