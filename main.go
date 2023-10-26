@@ -41,15 +41,80 @@ func readIsolationLevel() sql.IsolationLevel {
 	return level
 }
 
-func main() {
-	db := simulations.GetDB()
-	_, err := db.Exec("CREATE TABLE IF NOT EXISTS counters (id INT PRIMARY KEY, counter INT NOT NULL);")
+func createTables(db *sql.DB) {
+
+	_, err := db.Exec(`
+		CREATE TABLE IF NOT EXISTS counters (id INT PRIMARY KEY, counter INT NOT NULL);
+	`)
 
 	if err != nil {
 		panic("couldn't create table " + err.Error())
 	}
 
+	_, err = db.Exec(`
+		CREATE TABLE IF NOT EXISTS listings (id INT PRIMARY KEY, buyer TEXT NOT NULL);
+	`)
+
+	if err != nil {
+		panic("couldn't create table " + err.Error())
+	}
+
+	_, err = db.Exec(`
+		CREATE TABLE IF NOT EXISTS invoices (
+			id INT PRIMARY KEY,
+			recipient TEXT NOT NULL,
+			listing_id INT NOT NULL,
+			CONSTRAINT fk_category FOREIGN KEY (listing_id) 
+				REFERENCES listings(id)
+
+		);
+	`)
+
+	if err != nil {
+		panic("couldn't create table " + err.Error())
+	}
+}
+
+func main() {
+	db := simulations.GetDB()
+
+	createTables(db)
+
 	switch arg := os.Args[1]; arg {
+	case "invoiceconflict":
+		_, err := db.Exec(`
+			INSERT INTO listings VALUES (1234, "NO_ONE")
+			ON DUPLICATE KEY UPDATE buyer="NO_ONE"; 
+		`)
+
+		if err != nil {
+			panic(fmt.Errorf("Failed to insert new listing. %s", err.Error()))
+		}
+
+		_, err = db.Exec(`
+			INSERT INTO invoices (id, recipient, listing_id) VALUES (48, "NO_ONE", 1234)
+			ON DUPLICATE KEY UPDATE recipient="NO_ONE", listing_id=1234; 
+		`)
+
+		if err != nil {
+			panic(fmt.Errorf("Failed to insert new invoice. %s", err.Error()))
+		}
+
+		level := readIsolationLevel()
+		var res string
+		var e error
+
+		if level == NO_TRANSACTION {
+			res, e = simulations.InvoiceConflictNoTrans(true)
+		} else {
+			res, e = simulations.InvoiceConflict(level, true)
+		}
+
+		if e != nil {
+			panic(e)
+		}
+
+		println(res)
 	case "count100":
 		_, err := db.Exec(`
 			INSERT INTO counters VALUES (42, 0)
@@ -135,6 +200,6 @@ func main() {
 
 		println("res: ", resDirty)
 	default:
-		println("please choose one of: count100")
+		println("please choose one of: count100, invoiceconflict")
 	}
 }

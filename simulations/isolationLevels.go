@@ -146,3 +146,13 @@ func readNextLine(res *sql.Rows) (*int, error) {
 
 	return counter, err
 }
+
+func readNextLineString(res *sql.Rows) (*string, error) {
+	res.Next()
+	initialStringVal := ""
+	var counter *string = &initialStringVal
+
+	err := res.Scan(counter)
+
+	return counter, err
+}
