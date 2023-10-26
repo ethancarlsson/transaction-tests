@@ -1,0 +1,11 @@
+FROM mysql
+
+ENV MYSQL_ROOT_PASSWORD example
+
+WORKDIR /code
+COPY . .
+
+RUN mysql -p 3306 CREATE DATABASE ddia;
+
+EXPOSE 3306
+

@@ -2,10 +2,13 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"os"
 
 	"transactions.tests/transactions/simulations"
 )
+
+const NO_TRANSACTION = 444
 
 func readIsolationLevel() sql.IsolationLevel {
 	level := sql.LevelDefault
@@ -29,6 +32,8 @@ func readIsolationLevel() sql.IsolationLevel {
 		level = sql.LevelSerializable
 	case "linearizable":
 		level = sql.LevelLinearizable
+	case "no_t":
+		level = NO_TRANSACTION
 	default:
 		panic("choose one of: read_uncommitted, read_committed, write_committed, repeatable_read, snapshot, serializable, linearizable")
 	}
@@ -37,15 +42,39 @@ func readIsolationLevel() sql.IsolationLevel {
 }
 
 func main() {
+	db := simulations.GetDB()
+	_, err := db.Exec("CREATE TABLE IF NOT EXISTS counters (id INT PRIMARY KEY, counter INT NOT NULL);")
+
+	if err != nil {
+		panic("couldn't create table " + err.Error())
+	}
+
 	switch arg := os.Args[1]; arg {
-	case "dirty_read":
-		res, err := simulations.DirtyRead(readIsolationLevel())
+	case "count100":
+		_, err := db.Exec(`
+			INSERT INTO counters VALUES (42, 0)
+			ON DUPLICATE KEY UPDATE counter=0; 
+		`)
 
 		if err != nil {
-			panic(err)
+			panic(fmt.Errorf("Failed to insert new counter. %s", err.Error()))
+		}
+		level := readIsolationLevel()
+		var res string
+		var e error
+
+		if level == NO_TRANSACTION {
+			res, e = simulations.CountTo100NoTrans(true)
+		} else {
+			res, e = simulations.CountTo100(level, true)
+		}
+
+		if e != nil {
+			panic(e)
 		}
 
 		println(res)
+
 	case "transaction_level":
 		res, err := simulations.PrepDirtyReadTable()
 		println(res)
@@ -106,6 +135,6 @@ func main() {
 
 		println("res: ", resDirty)
 	default:
-		println("please choose one of: dirty_read")
+		println("please choose one of: count100")
 	}
 }

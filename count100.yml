@@ -1,0 +1,281 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: bash -l
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: /Users/ethancarlsson/Documents/Projects/transactions
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 134
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 32
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: -1
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: solid
+    title: count100 readcommitted and readuncommitted
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 290
+    content: "\r\nThe default interactive shell is now zsh.\r\nTo update your account to use zsh, please run `chsh -s /bin/zsh`.\r\nFor more details, please visit https://support.apple.com/kb/HT208050.\r\n\e[?1034hEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 1470
+    content: .
+  - delay: 69
+    content: /
+  - delay: 2024
+    content: t
+  - delay: 240
+    content: r
+  - delay: 512
+    content: 'ansactions '
+  - delay: 522
+    content: ' '
+  - delay: 442
+    content: "\b\e[K"
+  - delay: 204
+    content: c
+  - delay: 97
+    content: o
+  - delay: 102
+    content: u
+  - delay: 199
+    content: 'n'
+  - delay: 101
+    content: t
+  - delay: 480
+    content: '1'
+  - delay: 139
+    content: '0'
+  - delay: 143
+    content: '0'
+  - delay: 173
+    content: ' '
+  - delay: 455
+    content: r
+  - delay: 87
+    content: e
+  - delay: 290
+    content: a
+  - delay: 167
+    content: d
+  - delay: 320
+    content: _
+  - delay: 341
+    content: c
+  - delay: 98
+    content: u
+  - delay: 507
+    content: "\b\e[K"
+  - delay: 152
+    content: "\b\e[K"
+  - delay: 230
+    content: u
+  - delay: 214
+    content: 'n'
+  - delay: 546
+    content: c
+  - delay: 109
+    content: o
+  - delay: 207
+    content: m
+  - delay: 598
+    content: m
+  - delay: 231
+    content: i
+  - delay: 131
+    content: t
+  - delay: 287
+    content: t
+  - delay: 208
+    content: e
+  - delay: 232
+    content: d
+  - delay: 1964
+    content: "\r\n"
+  - delay: 72
+    content: "Writer: increments by one\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 2\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 4\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 6\r\nReader: sees counter val: 6\r\nWriter: increments by one\r\nReader: sees counter val: 7\r\nWriter: increments by one\r\nReader: sees counter val: 8\r\nReader: sees counter val: 9\r\nWriter: increments by one\r\nReader: sees counter val: 9\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 10\r\nReader: sees counter val: 11\r\nWriter: increments by one\r\nReader: sees counter val: 12\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 13\r\nReader: sees counter val: 14\r\nWriter: increments by one\r\nReader: sees counter val: 15\r\nWriter: increments by one\r\nReader: sees counter val: 16\r\nReader: sees counter val: 17\r\nWriter: increments by one\r\nReader: sees counter val: 17\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 18\r\nWriter: increments by one\r\nReader: sees counter val: 20\r\nWriter: increments by one\r\nReader: sees counter val: 21\r\nReader: sees counter val: 21\r\nWriter: increments by one\r\n"
+  - delay: 11
+    content: "Reader: sees counter val: 22\r\nWriter: increments by one\r\nReader: sees counter val: 23\r\nWriter: increments by one\r\nReader: sees counter val: 24\r\nWriter: increments by one\r\nReader: sees counter val: 25\r\nWriter: increments by one\r\nReader: sees counter val: 26\r\nWriter: increments by one\r\nReader: sees counter val: 27\r\nWriter: increments by one\r\nReader: sees counter val: 28\r\nWriter: increments by one\r\nReader: sees counter val: 29\r\nWriter: increments by one\r\nReader: sees counter val: 30\r\nWriter: increments by one\r\nReader: sees counter val: 31\r\nWriter: increments by one\r\nReader: sees counter val: 32\r\nReader: sees counter val: 33\r\nWriter: increments by one\r\nReader: sees counter val: 33\r\nWriter: increments by one\r\nReader: sees counter val: 34\r\nWriter: increments by one\r\nReader: sees counter val: 35\r\nWriter: increments by one\r\nReader: sees counter val: 36\r\nWriter: increments by one\r\nReader: sees counter val: 37\r\nReader: sees counter val: 37\r\nWriter: increments by one\r\nReader: sees counter val: 38\r\nWriter: increments by one\r\nReader: sees counter val: 39\r\nWriter: increments by one\r\nReader: sees counter val: 40\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 42\r\nReader: sees counter val: 42\r\nWriter: increments by one\r\nReader: sees counter val: 43\r\nWriter: increments by one\r\nReader: sees counter val: 44\r\nWriter: increments by one\r\nReader: sees counter val: 45\r\nReader: sees counter val: 45\r\nWriter: increments by one\r\nReader: sees counter val: 46\r\nWriter: increments by one\r\nReader: sees counter val: 47\r\nWriter: increments by one\r\nReader: sees counter val: 48\r\nWriter: increments by one\r\nReader: sees counter val: 49\r\nWriter: increments by one\r\nReader: sees counter val: 50\r\nWriter: increments by one\r\nReader: sees counter val: 51\r\nWriter: increments by one\r\nReader: sees counter val: 52\r\nWriter: increments by one\r\nReader: sees counter val: 53\r\nWriter: increments by one\r\nReader: sees counter val: 54\r\nWriter: increments by one\r\nReader: sees counter val: 55\r\nWriter: increments by one\r\nReader: sees counter val: 56\r\nWriter: increments by one\r\nReader: sees counter val: 57\r\nWriter: increments by one\r\nReader: sees counter val: 58\r\nReader: sees counter val: 58\r\nWriter: increments by one\r\nReader: sees counter val: 59\r\nWriter: increments by one\r\nReader: sees counter val: 60\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 62\r\nReader: sees counter val: 62\r\nWriter: increments by one\r\nReader: sees counter val: 63\r\nWriter: increments by one\r\nReader: sees counter val: 64\r\nWriter: increments by one\r\nReader: sees counter val: 65\r\nWriter: increments by one\r\nReader: sees counter val: 66\r\nWriter: increments by one\r\nReader: sees counter val: 67\r\nWriter: increments by one\r\nReader: sees counter val: 68\r\nWriter: increments by one\r\nReader: sees counter val: 69\r\nWriter: increments by one\r\nReader: sees counter val: 70\r\nWriter: increments by one\r\nReader: sees counter val: 71\r\nWriter: increments by one\r\nReader: sees counter val: 72\r\nWriter: increments by one\r\nReader: sees counter val: 73\r\nWriter: increments by one\r\nReader: sees counter val: 74\r\nWriter: increments by one\r\nReader: sees counter val: 75\r\nWriter: increments by one\r\nReader: sees counter val: 76\r\nWriter: increments by one\r\nReader: sees counter val: 77\r\nWriter: increments by one\r\nReader: sees counter val: 78\r\nReader: sees counter val: 78\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 80\r\nWriter: increments by one\r\nReader: sees counter val: 81\r\nWriter: increments by one\r\n"
+  - delay: 9
+    content: "Writer: increments by one\r\nReader: sees counter val: 83\r\nReader: sees counter val: 83\r\nWriter: increments by one\r\nReader: sees counter val: 84\r\nWriter: increments by one\r\nReader: sees counter val: 85\r\nWriter: increments by one\r\nReader: sees counter val: 86\r\nWriter: increments by one\r\nReader: sees counter val: 87\r\nWriter: increments by one\r\nReader: sees counter val: 88\r\nWriter: increments by one\r\nReader: sees counter val: 89\r\nWriter: increments by one\r\nReader: sees counter val: 90\r\nWriter: increments by one\r\nReader: sees counter val: 91\r\nWriter: increments by one\r\nReader: sees counter val: 92\r\nReader: sees counter val: 93\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 94\r\nWriter: increments by one\r\nReader: sees counter val: 95\r\nWriter: increments by one\r\nReader: sees counter val: 96\r\nWriter: increments by one\r\nWriter: increments by one\r\nWriter: increments by one\r\nCounter value now equals 100\r\nRead Uncommitted simulation complete\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 17920
+    content: .
+  - delay: 75
+    content: /
+  - delay: 915
+    content: t
+  - delay: 512
+    content: "\a"
+  - delay: 1835
+    content: r
+  - delay: 162
+    content: a
+  - delay: 354
+    content: 'nsactions '
+  - delay: 1420
+    content: c
+  - delay: 66
+    content: o
+  - delay: 121
+    content: u
+  - delay: 236
+    content: 'n'
+  - delay: 103
+    content: t
+  - delay: 475
+    content: '1'
+  - delay: 136
+    content: '0'
+  - delay: 158
+    content: '0'
+  - delay: 236
+    content: ' '
+  - delay: 629
+    content: r
+  - delay: 100
+    content: e
+  - delay: 194
+    content: a
+  - delay: 173
+    content: d
+  - delay: 1269
+    content: _
+  - delay: 333
+    content: c
+  - delay: 89
+    content: o
+  - delay: 237
+    content: m
+  - delay: 160
+    content: m
+  - delay: 1004
+    content: i
+  - delay: 187
+    content: t
+  - delay: 143
+    content: t
+  - delay: 209
+    content: e
+  - delay: 162
+    content: d
+  - delay: 548
+    content: "\r\n"
+  - delay: 51
+    content: "Reader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\n"
+  - delay: 10
+    content: "Reader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nWriter: increments by one\r\nReader: sees counter val: 0\r\nReader: sees counter val: 0\r\n"
+  - delay: 9
+    content: "Reader: sees counter val: 100\r\nCounter value now equals 100\r\nRead Committed simulation complete\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 16725
+    content: e
+  - delay: 526
+    content: "\b\e[K"
+  - delay: 2580
+    content: ' '
+  - delay: 474
+    content: "\a"
+  - delay: 1335
+    content: d
+  - delay: 626
+    content: "\b\e[K"
+  - delay: 151
+    content: "\b\e[K"
+  - delay: 131
+    content: "\a"
+  - delay: 331
+    content: "logout\r\n"
