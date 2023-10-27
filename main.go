@@ -73,6 +73,17 @@ func createTables(db *sql.DB) {
 	if err != nil {
 		panic("couldn't create table " + err.Error())
 	}
+
+	_, err = db.Exec(`
+		CREATE TABLE IF NOT EXISTS accounts (
+			id INT PRIMARY KEY AUTO_INCREMENT,
+			balance INT NOT NULL
+		);
+	`)
+
+	if err != nil {
+		panic("couldn't create table " + err.Error())
+	}
 }
 
 func main() {
@@ -81,6 +92,41 @@ func main() {
 	createTables(db)
 
 	switch arg := os.Args[1]; arg {
+	case "inconsistentacc":
+		_, err := db.Exec(`
+			INSERT INTO accounts VALUES (1, 500)
+			ON DUPLICATE KEY UPDATE balance=500; 
+		`)
+
+		if err != nil {
+			panic(fmt.Errorf("Failed to insert new account. %s", err.Error()))
+		}
+
+		_, err = db.Exec(`
+			INSERT INTO accounts VALUES (2, 500)
+			ON DUPLICATE KEY UPDATE balance=500; 
+		`)
+
+		if err != nil {
+			panic(fmt.Errorf("Failed to insert new account. %s", err.Error()))
+		}
+
+		level := readIsolationLevel()
+		var res string
+		var e error
+
+		if level == NO_TRANSACTION {
+		res, e = simulations.NoTCheckBalanceDuringTransfer(true)
+		} else {
+		res, e = simulations.CheckBalanceDuringTransfer(level, true)
+		}
+
+		if e != nil {
+			panic(e)
+		}
+
+		println(res)
+
 	case "invoiceconflict":
 		_, err := db.Exec(`
 			INSERT INTO listings VALUES (1234, "NO_ONE")
@@ -200,6 +246,6 @@ func main() {
 
 		println("res: ", resDirty)
 	default:
-		println("please choose one of: count100, invoiceconflict")
+		println("please choose one of: count100, invoiceconflict, inconsistentacc")
 	}
 }

@@ -1,6 +1,7 @@
 package simulations
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"time"
@@ -15,7 +16,7 @@ func GetDB() *sql.DB {
 		return cached_db
 	}
 
-	db, err := sql.Open("mysql", "root:example@tcp(localhost:8083)/ddia")
+	db, err := sql.Open("mysql", "root:example@tcp(0.0.0.0:8083)/ddia")
 
 	if err != nil {
 		panic(fmt.Sprintf("Failed to open the database. %s", err))
@@ -28,4 +29,23 @@ func GetDB() *sql.DB {
 	cached_db = db
 
 	return db
+}
+
+func RunInTransaction(db *sql.DB, isolationLevel sql.IsolationLevel, callback func(DbInterfacer, bool), isLogging bool) {
+	tx, err := db.BeginTx(
+		context.Background(),
+		&sql.TxOptions{
+			Isolation: isolationLevel,
+			ReadOnly:  false,
+		})
+
+	if err != nil {
+		panic("couldn't beginning transaction " + err.Error())
+	}
+
+	callback(tx, isLogging)
+
+	if err := tx.Commit(); err != nil {
+		panic("failed to commit transaction " + err.Error())
+	}
 }

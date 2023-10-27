@@ -1,0 +1,4 @@
+0 	ReadUncommitted	3901366459
+1	ReadCommitted	3990007875
+2	RepeatableRead	3942655333
+3 	NoTransaction	2371727583
