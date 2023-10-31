@@ -161,6 +161,31 @@ func main() {
 		}
 
 		println(res)
+	case "twowriterscount":
+		_, err := db.Exec(`
+			INSERT INTO counters VALUES (42, 0)
+			ON DUPLICATE KEY UPDATE counter=0; 
+		`)
+
+		if err != nil {
+			panic(fmt.Errorf("Failed to insert new counter. %s", err.Error()))
+		}
+		level := readIsolationLevel()
+		var res string
+		var e error
+
+		if level == NO_TRANSACTION {
+			res, e = simulations.NoTTwoWritersCountTo100(true)
+		} else {
+			res, e = simulations.TwoWritersCountTo100(level, true)
+		}
+
+		if e != nil {
+			panic(e)
+		}
+
+		println(res)
+
 	case "count100":
 		_, err := db.Exec(`
 			INSERT INTO counters VALUES (42, 0)

@@ -85,6 +85,149 @@ func CountTo100(isolationLevel sql.IsolationLevel, isLogging bool) (string, erro
 	return isolationLevel.String() + " simulation complete", nil
 }
 
+func NoTTwoWritersCountTo100(isLogging bool) (string, error) {
+	db := GetDB()
+
+	var wg sync.WaitGroup
+
+	wg.Add(2)
+
+	go func() {
+		defer wg.Done()
+
+
+		for i := 0; i < 10000; i++ {
+			if isLogging {
+				println("Writer1: increments by one")
+			}
+
+			_, err := db.Exec(`
+				UPDATE counters
+				SET counter = counter+1
+				WHERE id = 42;
+			`)
+
+			if err != nil {
+				panic(fmt.Errorf("couldn't update counter. %s", err.Error()))
+			}
+		}
+	}()
+
+	go func() {
+		defer wg.Done()
+
+		for i := 0; i < 10000; i++ {
+			if isLogging {
+				println("Writer2: increments by one")
+			}
+
+			_, err := db.Exec(`
+				UPDATE counters
+				SET counter = counter+1
+				WHERE id = 42;
+			`)
+
+			if err != nil {
+				panic(fmt.Errorf("couldn't update counter. %s", err.Error()))
+			}
+		}
+	}()
+
+	wg.Wait()
+
+	readCount42(db, isLogging)
+
+	return "No transaction simulation complete", nil
+}
+
+func TwoWritersCountTo100(isolationLevel sql.IsolationLevel, isLogging bool) (string, error) {
+	db := GetDB()
+
+	var wg sync.WaitGroup
+
+	wg.Add(2)
+
+	go func() {
+		defer wg.Done()
+
+		tx, err := db.BeginTx(
+			context.Background(),
+			&sql.TxOptions{
+				Isolation: isolationLevel,
+				ReadOnly:  false,
+			})
+
+		if err != nil {
+			panic("couldn't init transaction " + err.Error())
+		}
+
+		for i := 0; i < 10000; i++ {
+			if isLogging {
+				println("Writer: increments by one")
+			}
+
+			_, err = tx.Exec(`
+				UPDATE counters
+				SET counter = counter+1
+				WHERE id = 42;
+			`)
+
+			if err != nil {
+				panic(fmt.Errorf("couldn't update counter. %s", err.Error()))
+			}
+		}
+
+		err = tx.Commit()
+
+		if err != nil {
+			panic("couln't commit " + err.Error())
+		}
+	}()
+
+	go func() {
+		defer wg.Done()
+
+		tx, err := db.BeginTx(
+			context.Background(),
+			&sql.TxOptions{
+				Isolation: isolationLevel,
+				ReadOnly:  false,
+			})
+
+		if err != nil {
+			panic("couldn't init transaction " + err.Error())
+		}
+
+		for i := 0; i < 10000; i++ {
+			if isLogging {
+				println("Writer: increments by one")
+			}
+
+			_, err = tx.Exec(`
+				UPDATE counters
+				SET counter = counter+1
+				WHERE id = 42;
+			`)
+
+			if err != nil {
+				panic(fmt.Errorf("couldn't update counter. %s", err.Error()))
+			}
+		}
+
+		err = tx.Commit()
+
+		if err != nil {
+			panic("couln't commit " + err.Error())
+		}
+	}()
+
+	wg.Wait()
+
+	readCount42(db, isLogging)
+
+	return isolationLevel.String() + " simulation complete", nil
+}
+
 func readCount42(dbInter DbInterfacer, isLogging bool) {
 	res, err := dbInter.Query(`
 				SELECT counter FROM counters
