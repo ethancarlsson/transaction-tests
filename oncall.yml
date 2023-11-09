@@ -1,0 +1,589 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: bash -l
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: /Users/ethancarlsson/Documents/Projects/transactions
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 163
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 40
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: -1
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: solid
+    title: On Call Doctors
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 542
+    content: "\r\nThe default interactive shell is now zsh.\r\nTo update your account to use zsh, please run `chsh -s /bin/zsh`.\r\nFor more details, please visit https://support.apple.com/kb/HT208050.\r\n\e[?1034hEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 2497
+    content: .
+  - delay: 115
+    content: /
+  - delay: 1716
+    content: t
+  - delay: 193
+    content: r
+  - delay: 216
+    content: a
+  - delay: 126
+    content: 'n'
+  - delay: 160
+    content: s
+  - delay: 231
+    content: a
+  - delay: 213
+    content: c
+  - delay: 203
+    content: t
+  - delay: 81
+    content: i
+  - delay: 78
+    content: o
+  - delay: 60
+    content: 'n'
+  - delay: 373
+    content: s
+  - delay: 319
+    content: ' '
+  - delay: 248
+    content: o
+  - delay: 110
+    content: 'n'
+  - delay: 294
+    content: c
+  - delay: 177
+    content: a
+  - delay: 73
+    content: l
+  - delay: 158
+    content: l
+  - delay: 461
+    content: ' '
+  - delay: 159
+    content: 'n'
+  - delay: 111
+    content: o
+  - delay: 1130
+    content: _
+  - delay: 199
+    content: t
+  - delay: 2271
+    content: "\r\n"
+  - delay: 81
+    content: "doctor 2 sees there are 2 doctors on call including them\r\ndoctor 1 sees there are 2 doctors on call including them\r\ndoctor 2 sets themselves off call\r\n"
+  - delay: 8
+    content: "doctor 1 sets themselves off call\r\n0 doctors on call\r\n\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 6217
+    content: ':'
+  - delay: 265
+    content: (
+  - delay: 1105
+    content: "\b\e[K"
+  - delay: 175
+    content: "\b\e[K"
+  - delay: 1313
+    content: ./transactions oncall no_t
+  - delay: 1364
+    content: "\b\e[K"
+  - delay: 1096
+    content: "\b\e[K"
+  - delay: 177
+    content: "\b\e[K"
+  - delay: 265
+    content: "\b\e[K"
+  - delay: 764
+    content: r
+  - delay: 94
+    content: e
+  - delay: 175
+    content: a
+  - delay: 169
+    content: d
+  - delay: 864
+    content: _
+  - delay: 244
+    content: c
+  - delay: 96
+    content: o
+  - delay: 232
+    content: m
+  - delay: 149
+    content: m
+  - delay: 172
+    content: i
+  - delay: 187
+    content: t
+  - delay: 164
+    content: t
+  - delay: 527
+    content: e
+  - delay: 184
+    content: d
+  - delay: 680
+    content: "\r\n"
+  - delay: 80
+    content: "doctor 2 sees there are 2 doctors on call including them\r\n"
+  - delay: 7
+    content: "doctor 1 sees there are 2 doctors on call including them\r\ndoctor 2 sets themselves off call\r\ndoctor 1 sets themselves off call\r\n0 doctors on call\r\n\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 2012
+    content: ':'
+  - delay: 1138
+    content: (
+  - delay: 1355
+    content: "\b\e[K"
+  - delay: 154
+    content: "\b\e[K"
+  - delay: 1222
+    content: ./transactions oncall read_committed
+  - delay: 1154
+    content: "\b\b\b\b\b\b\b\b\b\e[K"
+  - delay: 754
+    content: "\b\e[K"
+  - delay: 171
+    content: "\b\e[K"
+  - delay: 157
+    content: "\b\e[K"
+  - delay: 221
+    content: "\b\e[K"
+  - delay: 299
+    content: "\b\e[K"
+  - delay: 2710
+    content: r
+  - delay: 100
+    content: e
+  - delay: 214
+    content: a
+  - delay: 388
+    content: d
+  - delay: 533
+    content: _
+  - delay: 226
+    content: r
+  - delay: 119
+    content: e
+  - delay: 268
+    content: p
+  - delay: 383
+    content: e
+  - delay: 169
+    content: a
+  - delay: 220
+    content: t
+  - delay: 307
+    content: a
+  - delay: 153
+    content: b
+  - delay: 137
+    content: l
+  - delay: 96
+    content: e
+  - delay: 826
+    content: "\r\n"
+  - delay: 65
+    content: "panic: choose one of: read_uncommitted, read_committed, write_committed, repeatable_read, snapshot, serializable, linearizable\r\n\r\ngoroutine 1 [running]:\r\nmain.readIsolationLevel(...)\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/main.go:38\r\nmain.main()\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/main.go:135 +0x172c\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 1904
+    content: ./transactions oncall read_repeatable
+  - delay: 595
+    content: "\b\b\b\b\b\b\b\b\b\b\e[K"
+  - delay: 678
+    content: "\b\b\b\b\b\e[K"
+  - delay: 321
+    content: r
+  - delay: 79
+    content: e
+  - delay: 263
+    content: p
+  - delay: 287
+    content: e
+  - delay: 182
+    content: a
+  - delay: 170
+    content: t
+  - delay: 265
+    content: a
+  - delay: 132
+    content: b
+  - delay: 98
+    content: l
+  - delay: 94
+    content: e
+  - delay: 569
+    content: _
+  - delay: 167
+    content: r
+  - delay: 108
+    content: e
+  - delay: 198
+    content: a
+  - delay: 150
+    content: d
+  - delay: 610
+    content: "\r\n"
+  - delay: 54
+    content: "doctor 2 sees there are 2 doctors on call including them\r\ndoctor 1 sees there are 2 doctors on call including them\r\ndoctor 2 sets themselves off call\r\ndoctor 1 sets themselves off call\r\n"
+  - delay: 5
+    content: "0 doctors on call\r\n\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 1963
+    content: ':'
+  - delay: 588
+    content: )
+  - delay: 869
+    content: "\b\e[K"
+  - delay: 336
+    content: (
+  - delay: 1414
+    content: "\r\nbash: syntax error near unexpected token `newline'\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 1640
+    content: ':('
+  - delay: 1211
+    content: "\b\b./transactions oncall repeatable_read"
+  - delay: 1650
+    content: "\b\b\b\b\e[K"
+  - delay: 1678
+    content: "\b\b\b\b\b\b\b\b\b\b\b\e[K"
+  - delay: 3118
+    content: s
+  - delay: 427
+    content: e
+  - delay: 171
+    content: r
+  - delay: 191
+    content: i
+  - delay: 197
+    content: a
+  - delay: 158
+    content: l
+  - delay: 238
+    content: i
+  - delay: 648
+    content: z
+  - delay: 265
+    content: a
+  - delay: 155
+    content: b
+  - delay: 137
+    content: l
+  - delay: 112
+    content: e
+  - delay: 1878
+    content: "\r\n"
+  - delay: 79
+    content: "doctor 2 sees there are 2 doctors on call including them\r\ndoctor 2 sets themselves off call\r\n"
+  - delay: 28
+    content: "doctor 1 sees there are 1 doctors on call including them\r\ndoctor 1 stays on call because there are less than 2 doctors on call at the moment\r\n1 doctors on call\r\n\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 7492
+    content: ./transactions oncall serializable
+  - delay: 1048
+    content: "\r\n"
+  - delay: 59
+    content: "doctor 2 sees there are 2 doctors on call including them\r\ndoctor 1 sees there are 2 doctors on call including them\r\ndoctor 2 sets themselves off call\r\npanic: couldn't set doctor off call Error 1213 (40001): Deadlock found when trying to get lock; try restarting transaction\r\n\r\ngoroutine 20 [running]:\r\ntransactions.tests/transactions/simulations.updateDoctorOnCallStatus(0x1400001e3c0?, 0x0, {0x1028e7848, 0x14000182100})\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/simulations/oncall.go:116 +0x104\r\ntransactions.tests/transactions/simulations.attemptToGoOffCall(0x140001169c0?, {0x1028e7848, 0x14000182100}, 0x1)\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/simulations/oncall.go:100 +0x144\r\ntransactions.tests/transactions/simulations.OnCall.func1.1({0x1028e7848?, 0x14000182100?}, 0xc0?)\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/simulations/oncall.go:57 +0x34\r\ntransactions.tests/transactions/simulations.RunInTransaction(0x0?, 0x0?, 0x1028e57a8, 0x0?)\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/simulations/db.go:46 +0x6c\r\ntransactions.tests/transactions/simulations.OnCall.func1()\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/simulations/oncall.go:53 +0x60\r\ncreated by transactions.tests/transactions/simulations.OnCall in goroutine 1\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/simulations/oncall.go:50 +0xa0\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 3040
+    content: ./transactions oncall serializable
+  - delay: 788
+    content: "\r\n"
+  - delay: 54
+    content: "doctor 2 sees there are 2 doctors on call including them\r\n"
+  - delay: 10
+    content: "doctor 2 sets themselves off call\r\ndoctor 1 sees there are 1 doctors on call including them\r\ndoctor 1 stays on call because there are less than 2 doctors on call at the moment\r\n1 doctors on call\r\n\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 1691
+    content: ./transactions oncall serializable
+  - delay: 1050
+    content: "\r\n"
+  - delay: 61
+    content: "doctor 2 sees there are 2 doctors on call including them\r\ndoctor 2 sets themselves off call\r\ndoctor 1 sees there are 1 doctors on call including them\r\ndoctor 1 stays on call because there are less than 2 doctors on call at the moment\r\n1 doctors on call\r\n\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 965
+    content: ./transactions oncall serializable
+  - delay: 924
+    content: "\r\n"
+  - delay: 51
+    content: "doctor 2 sees there are 2 doctors on call including them\r\ndoctor 1 sees there are 2 doctors on call including them\r\ndoctor 2 sets themselves off call\r\npanic: couldn't set doctor off call Error 1213 (40001): Deadlock found when trying to get lock; try restarting transaction\r\n\r\ngoroutine 20 [running]:\r\ntransactions.tests/transactions/simulations.updateDoctorOnCallStatus(0x1400001e3c0?, 0x0, {0x10440f848, 0x14000154100})\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/simulations/oncall.go:116 +0x104\r\ntransactions.tests/transactions/simulations.attemptToGoOffCall(0x140001169c0?, {0x10440f848, 0x14000154100}, 0x1)\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/simulations/oncall.go:100 +0x144\r\ntransactions.tests/transactions/simulations.OnCall.func1.1({0x10440f848?, 0x14000154100?}, 0xc0?)\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/simulations/oncall.go:57 +0x34\r\ntransactions.tests/transactions/simulations.RunInTransaction(0x0?, 0x0?, 0x10440d7a8, 0x0?)\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/simulations/db.go:46 +0x6c\r\ntransactions.tests/transactions/simulations.OnCall.func1()\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/simulations/oncall.go:53 +0x60\r\ncreated by transactions.tests/transactions/simulations.OnCall in goroutine 1\r\n\t/Users/ethancarlsson/Documents/Projects/transactions/simulations/oncall.go:50 +0xa0\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 15628
+    content: "\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 171
+    content: "\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 123
+    content: "\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 137
+    content: "\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 544
+    content: c
+  - delay: 101
+    content: l
+  - delay: 209
+    content: e
+  - delay: 137
+    content: a
+  - delay: 151
+    content: r
+  - delay: 220
+    content: "\r\n"
+  - delay: 16
+    content: "\e[H\e[2JEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 1205
+    content: s
+  - delay: 173
+    content: e
+  - delay: 573
+    content: e
+  - delay: 137
+    content: m
+  - delay: 218
+    content: s
+  - delay: 142
+    content: ' '
+  - delay: 167
+    content: l
+  - delay: 137
+    content: i
+  - delay: 172
+    content: k
+  - delay: 115
+    content: e
+  - delay: 156
+    content: ' '
+  - delay: 136
+    content: i
+  - delay: 89
+    content: t
+  - delay: 114
+    content: ' '
+  - delay: 189
+    content: w
+  - delay: 96
+    content: o
+  - delay: 102
+    content: r
+  - delay: 127
+    content: k
+  - delay: 150
+    content: s
+  - delay: 119
+    content: ' '
+  - delay: 1016
+    content: f
+  - delay: 126
+    content: o
+  - delay: 138
+    content: r
+  - delay: 80
+    content: ' '
+  - delay: 2999
+    content: "\b\b\b\b\e[K"
+  - delay: 448
+    content: w
+  - delay: 55
+    content: i
+  - delay: 150
+    content: t
+  - delay: 32
+    content: h
+  - delay: 202
+    content: ' '
+  - delay: 219
+    content: s
+  - delay: 218
+    content: e
+  - delay: 150
+    content: r
+  - delay: 107
+    content: i
+  - delay: 117
+    content: a
+  - delay: 123
+    content: l
+  - delay: 201
+    content: i
+  - delay: 125
+    content: z
+  - delay: 234
+    content: a
+  - delay: 133
+    content: b
+  - delay: 121
+    content: l
+  - delay: 54
+    content: e
+  - delay: 125
+    content: ' '
+  - delay: 334
+    content: "\b\e[K"
+  - delay: 226
+    content: ','
+  - delay: 325
+    content: ' '
+  - delay: 187
+    content: b
+  - delay: 213
+    content: t
+  - delay: 93
+    content: ' '
+  - delay: 241
+    content: "\b\e[K"
+  - delay: 250
+    content: u
+  - delay: 256
+    content: "\b\e[K"
+  - delay: 136
+    content: "\b\e[K"
+  - delay: 248
+    content: u
+  - delay: 117
+    content: t
+  - delay: 70
+    content: ' '
+  - delay: 194
+    content: w
+  - delay: 103
+    content: i
+  - delay: 165
+    content: l
+  - delay: 219
+    content: l
+  - delay: 221
+    content: ' '
+  - delay: 178
+    content: t
+  - delay: 149
+    content: r
+  - delay: 79
+    content: i
+  - delay: 154
+    content: g
+  - delay: 155
+    content: g
+  - delay: 169
+    content: e
+  - delay: 79
+    content: r
+  - delay: 74
+    content: ' '
+  - delay: 3405
+    content: d
+  - delay: 190
+    content: e
+  - delay: 118
+    content: a
+  - delay: 295
+    content: d
+  - delay: 165
+    content: l
+  - delay: 177
+    content: o
+  - delay: 250
+    content: c
+  - delay: 503
+    content: k
+  - delay: 183
+    content: s
+  - delay: 5073
+    content: "\r\n"
+  - delay: 14
+    content: "bash: seems: command not found\r\nEthans-MacBook-Air:transactions ethancarlsson$ "
+  - delay: 1653
+    content: e
+  - delay: 312
+    content: x
+  - delay: 132
+    content: i
+  - delay: 162
+    content: t
+  - delay: 146
+    content: "\r\nlogout\r\n"

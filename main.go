@@ -84,6 +84,19 @@ func createTables(db *sql.DB) {
 	if err != nil {
 		panic("couldn't create table " + err.Error())
 	}
+
+	_, err = db.Exec(`
+		CREATE TABLE IF NOT EXISTS doctors (
+			id INT PRIMARY KEY AUTO_INCREMENT,
+			name TEXT NOT NULL,
+			on_call BOOLEAN NOT NULL,
+			shift_id INTEGER NOT NULL
+		);
+	`)
+
+	if err != nil {
+		panic("couldn't create table " + err.Error())
+	}
 }
 
 func main() {
@@ -92,6 +105,48 @@ func main() {
 	createTables(db)
 
 	switch arg := os.Args[1]; arg {
+	case "oncall":
+		_, err := db.Exec(`
+			INSERT INTO doctors VALUES (1, "Alice", true, 1234)
+			ON DUPLICATE KEY UPDATE name= "Alice", on_call=true, shift_id=1234; 
+		`)
+
+		if err != nil {
+			panic(fmt.Errorf("Failed to insert new account. %s", err.Error()))
+		}
+		_, err = db.Exec(`
+			INSERT INTO doctors VALUES (2, "Bob", true, 1234)
+			ON DUPLICATE KEY UPDATE name= "Bob", on_call=true, shift_id=1234; 
+		`)
+
+		if err != nil {
+			panic(fmt.Errorf("Failed to insert new account. %s", err.Error()))
+		}
+
+		_, err = db.Exec(`
+			INSERT INTO doctors VALUES (3, "Carol", false, 1234)
+			ON DUPLICATE KEY UPDATE name= "Carol", on_call=false, shift_id=1234; 
+		`)
+
+		if err != nil {
+			panic(fmt.Errorf("Failed to insert new account. %s", err.Error()))
+		}
+
+		level := readIsolationLevel()
+		var res string
+		var e error
+
+		if level == NO_TRANSACTION {
+			res, e = simulations.NoTOnCall(true)
+		} else {
+			res, e = simulations.OnCall(level, true)
+		}
+
+		if e != nil {
+			panic(e)
+		}
+
+		println(res)
 	case "inconsistentacc":
 		_, err := db.Exec(`
 			INSERT INTO accounts VALUES (1, 500)
@@ -116,9 +171,9 @@ func main() {
 		var e error
 
 		if level == NO_TRANSACTION {
-		res, e = simulations.NoTCheckBalanceDuringTransfer(true)
+			res, e = simulations.NoTCheckBalanceDuringTransfer(true)
 		} else {
-		res, e = simulations.CheckBalanceDuringTransfer(level, true)
+			res, e = simulations.CheckBalanceDuringTransfer(level, true)
 		}
 
 		if e != nil {
